@@ -1,10 +1,9 @@
-
 import streamlit as st
 import requests
+import os
 
 # CareerPilot backend address
-API_URL = "http://127.0.0.1:8000"
-
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000").rstrip("/")
 
 def api_request(method, path, timeout=15, **kwargs):
     """Send an HTTP request to the local FastAPI backend without proxy interference."""
