@@ -5,6 +5,7 @@ from backend.app.database import Base, engine
 from backend.app import models
 from backend.app.routers.jobs import router as jobs_router
 from backend.app.routers.explanations import router as explanations_router
+from backend.app.seed import seed_jobs
 
 app = FastAPI(
     title="CareerPilot API",
@@ -16,6 +17,7 @@ app.include_router(profile_router)
 app.include_router(explanations_router)
 # Create database tables
 Base.metadata.create_all(bind=engine)
+seed_jobs()
 
 
 @app.get("/")
